@@ -19,7 +19,7 @@ class EditContact extends React.Component {
   /** On successful submit, insert the data. */
   submit(data) {
     const { firstName, lastName, address, image, description, _id } = data;
-    Contacts.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
+    Contacts.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
         Bert.alert({ type: 'danger', message: `Update failed: ${error.message}` }) :
         Bert.alert({ type: 'success', message: 'Update succeeded' })));
   }
@@ -65,7 +65,7 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe('Contact');
+  const subscription = Meteor.subscribe('Contacts');
   return {
     doc: Contacts.findOne(documentId),
     ready: subscription.ready(),
