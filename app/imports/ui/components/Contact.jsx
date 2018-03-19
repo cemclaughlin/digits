@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Image } from 'semantic-ui-react';
+import { Card, Image, Link } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -20,6 +20,9 @@ class Contact extends React.Component {
               {this.props.contact.description}
             </Card.Description>
           </Card.Content>
+          <Card.Content extra>
+            <Link to={`/edit/${this.props.contact._id}`}>Edit</Link>
+          </Card.Content>
         </Card>
     );
   }
@@ -31,4 +34,4 @@ Contact.propTypes = {
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(Contact);Contact.jsx
+export default withRouter(Contact);
