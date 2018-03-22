@@ -1,3 +1,5 @@
+/* eslint-disable-next-line */
+
 import React from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -23,7 +25,10 @@ class Contact extends React.Component {
   }
 
   onClick() {
-    Contacts.remove(this.props.contact._id, this.deleteCallback);
+    const result = confirm('Want to delete?');
+    if (result) {
+      Contacts.remove(this.props.contact._id, this.deleteCallback);
+    }
   }
 
   render() {
